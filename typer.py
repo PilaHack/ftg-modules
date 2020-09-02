@@ -11,8 +11,8 @@ logger = logging.getLogger(__name__)
 @loader.tds
 class TyperMod(loader.Module):
     """Makes your messages type slower"""
-    strings = {"name": "WriteTyper",
-               "no_message": "<b>You can't type nothing!</b>",
+    strings = {"name": "Typewriter",
+               "no_message": "<b>Не указано сообщение!</b>",
                "type_char_cfg_doc": "Character for typewriter",
                "delay_typer_cfg_doc": "How long to delay showing the typewriter character",
                "delay_text_cfg_doc": "How long to delay showing the text"}
@@ -24,7 +24,7 @@ class TyperMod(loader.Module):
 
     @loader.ratelimit
     async def typecmd(self, message):
-        """.typew <message>"""
+        """.type <message>"""
         a = utils.get_args_raw(message)
         if not a:
             await utils.answer(message, self.strings("no_message", message))
